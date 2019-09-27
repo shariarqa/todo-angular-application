@@ -1,0 +1,12 @@
+<h4>Login to My Todo's</h4>
+
+<small *ngIf="invalidLogin">{{errorMessage}}</small>
+
+<div>
+User Name : <input type="text" name="username" [(ngModel)]="username">
+Password : <input type = "Password" name="Password" [(ngModel)]="password">
+
+<!--User Name: {{username}}-->
+
+<button (click)=handleLogin1() class="btn btn-success">Login</button>
+</div>
