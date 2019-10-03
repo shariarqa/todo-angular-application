@@ -16,18 +16,15 @@ name = '';
 
   ngOnInit() {
 
-    console.log(this.message)
+    //console.log(this.message)
     // console.log(this.route.snapshot.params['name'])
 
     this.name = this.route.snapshot.params['name'];
 
   }
+  getWelcomeMessage(){
+    console.log("Get Welcome Message");
+  }
 
 }
 
-export class Class1 {
-}
-
-export class Class2 {
-
-}
