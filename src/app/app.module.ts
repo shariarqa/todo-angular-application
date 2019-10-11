@@ -11,6 +11,9 @@ import { ListodoComponent } from './listodo/listodo.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
+import { HttpClientModule} from "@angular/common/http";
+import { AddressbookComponent } from './component/addressbook/addressbook.component';
+import { TodoComponent } from './todo/todo.component';
 
 
 @NgModule({
@@ -23,12 +26,15 @@ import { LogoutComponent } from './logout/logout.component';
     MenuComponent,
     FooterComponent,
     LogoutComponent,
+    AddressbookComponent,
+    TodoComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],
