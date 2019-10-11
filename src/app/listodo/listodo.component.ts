@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TodoDataService} from '../service/data/todo-data.service';
+import {Router} from "@angular/router";
 
 export class Todo {
 
@@ -8,7 +10,7 @@ export class Todo {
     public done: boolean,
     public targetDate: Date
 
-  ){
+  ) {
 
   }
 
@@ -23,29 +25,52 @@ export class Todo {
 
 export class ListodoComponent implements OnInit {
 
-  todos = [
+  todos: Todo[];
+  message: string;
 
-    new Todo(1, 'Learn to Dance', false, new Date()),
-    new Todo(2, 'Learn to Code', false, new Date()),
-    new Todo(3, 'Learn to Sleep', false, new Date()),
+  constructor(
 
-    // {id : 1, description: 'Learn to Dance'},
-    // {id : 2, description: 'Learn to Code'},
-    // {id : 3, description: 'Learn to Sleep'}
+    private todoservice: TodoDataService,
+    private router: Router
 
-
-  ]
-
-  // todo= {
-  //
-  //   id : 1,
-  //   description: 'Learn to Dance'
-  //
-  // }
-
-  constructor() { }
+  ) { }
 
   ngOnInit() {
+    this.refreshTodos();
+
+  }
+
+  refreshTodos(){
+    this.todoservice.retriveAllTodos('Rana').subscribe(
+      response => {
+        console.log(response);
+        this.todos = response;
+      }
+    );
+  }
+
+  deleteTodo(id) {
+    console.log(`delete todo ${id}`);
+    this.todoservice.deleteTodo('Rana', id).subscribe(
+
+      response => {
+        console.log(response);
+        this.message = `Delete of Todo ${id}Successful`;
+        this.refreshTodos();
+      }
+
+    );
+  }
+
+  updateTodo(id){
+    console.log(`update ${id}`)
+    this.router.navigate(['todos',id])
+  }
+
+  addTodo(){
+    this.router.navigate(['todos',-1])
+
+
   }
 
 }

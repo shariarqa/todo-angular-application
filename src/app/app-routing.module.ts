@@ -6,6 +6,8 @@ import {ErrorComponent} from './error/error.component';
 import {ListodoComponent} from './listodo/listodo.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RouteGuardService} from './service/route-guard.service';
+import {AddressbookComponent} from "./component/addressbook/addressbook.component";
+import {TodoComponent} from "./todo/todo.component";
 
 
 
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent,  canActivate: [RouteGuardService]},
   {path: 'todos', component: ListodoComponent,  canActivate: [RouteGuardService]},
   {path: 'logout', component: LogoutComponent,  canActivate: [RouteGuardService]},
+  {path: 'addressbook', component: AddressbookComponent,  canActivate: [RouteGuardService]},
+  {path: 'todos/:id', component: TodoComponent,  canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
 
 
